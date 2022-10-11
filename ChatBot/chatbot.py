@@ -14,3 +14,16 @@ a = int(input("Now I will prove to you that I can count to any number you want.\
 for i in range(a +1):
     print(str(i) + "!")
 print("Completed, have a nice day!")
+print("Let's test you./ How much is 1000-7?")
+print("1. 993!")
+print("2. 994!")
+print("3. 995!")
+print("4. 996!")
+while True:
+    k = int(input(">"))
+    if k == 1:
+        print("Cool 1000-7=993!/Congratulations, have a nice day!")
+        break
+    else:
+        print("Please try again")
+
