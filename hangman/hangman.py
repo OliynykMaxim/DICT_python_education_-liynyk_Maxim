@@ -1,4 +1,3 @@
-
 import random
 
 print("HANGMAN")
@@ -41,3 +40,4 @@ while play:
     else:
         exit = False
         break
+
