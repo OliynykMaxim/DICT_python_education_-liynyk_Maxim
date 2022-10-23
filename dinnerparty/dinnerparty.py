@@ -7,4 +7,8 @@ print('Enter the name of every friend (including you), each on a new line:')
 for _ in range(num):
     name = input(">")
     payments[name] = 0
+price = int(input("Enter the total amount:\n>"))
+a = round(price/num, 2)
+for name in payments:
+    payments[name] = a
 print(payments)
