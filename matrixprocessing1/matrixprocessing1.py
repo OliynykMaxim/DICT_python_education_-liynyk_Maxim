@@ -5,8 +5,8 @@ class MyError(Exception):
 
 def choice_1():
     matrix_a = []
-    num = "0123456789"
     matrix_b = []
+    num = "0123456789"
 
     while True:
         try:
@@ -216,11 +216,11 @@ def choice_3():
         new_list_b = []
 
     result = []
-    for i in range(0, len(int_matrix_a)):
+    for i in range(len(int_matrix_a)):
         string = []
-        for d in range(0, len(int_matrix_b[0])):
+        for d in range(len(int_matrix_b[0]))
             number = 0
-            for k in range(0, len(int_matrix_a[0])):
+            for k in range(len(int_matrix_a[0])):
                 number += int_matrix_a[i][k] * int_matrix_b[k][d]
             string.append(number)
         result.append(string)
@@ -232,6 +232,101 @@ def choice_3():
         print()
 
 
+ def choice_4():
+            print("""1. Main diagonal
+        2. Side diagonal
+        3. Vertical line
+        4. Horizontal line""")
+
+            while True:
+                try:
+                    good = "1234"
+                    choice_t = input("\nEnter your choice: 1, 2, 3 or 4:\n> ")
+                    if choice_t not in good:
+                        raise MyError("Incorrect input, try again")
+                    break
+                except MyError as no:
+                    print(no)
+
+            while True:
+                try:
+                    num = "0123456789"
+                    size = input("Enter size of matrix:\n> ")
+                    size = size.split(sep=" ")
+                    if len(size) > 2 or len(size) < 2 or str(size[0]) not in num or str(size[1]) not in num:
+                        raise MyError(f'Incorrect input!\nYou should enter the size, like "3 3", "4 5", etc.\n')
+                    break
+                except MyError as err:
+                    print(err)
+                except Exception as err:
+                    print(err)
+
+            matrix = []
+            print("Enter matrix:")
+            for z in range(int(size[0])):
+                while True:
+                    try:
+                        elem = input("> ")
+                        elem = elem.split(sep=" ")
+                        if int(len(elem)) > int(size[1]) or int(len(elem)) < int(size[1]):
+                            raise MyError(f'You should enter only {size[1]} numbers in line!')
+                        else:
+                            matrix.append(elem)
+                            break
+                    except MyError as no:
+                        print(no)
+
+            int_matrix = []
+            new_list = []
+            for c in range(int(size[0])):
+                for x in matrix[c]:
+                    i = int(x)
+                    new_list.append(i)
+                int_matrix.append(new_list)
+                new_list = []
+
+            result = []
+            for i in range(len(int_matrix)):
+                string = []
+                for d in range(len(int_matrix[0])):
+                    number = 0
+                    for k in range(1):
+                        number += int_matrix[d][i]
+                    string.append(number)
+                result.append(string)
+
+            print("The result is:")
+            if choice_t == "1":
+                for i in range(len(result)):
+                    for x in result[i]:
+                        print(x, end=" ")
+                    print()
+
+            elif choice_t == "2":
+                for c in range(len(result)):
+                    result[c].reverse()
+                result.reverse()
+                for i in range(len(result)):
+                    for x in result[i]:
+                        print(x, end=" ")
+                    print()
+
+            elif choice_t == "3":
+                for c in range(len(int_matrix)):
+                    int_matrix[c].reverse()
+                for i in range(len(int_matrix)):
+                    for x in int_matrix[i]:
+                        print(x, end=" ")
+                    print()
+
+            elif choice_t == "4":
+                int_matrix.reverse()
+                for i in range(len(int_matrix)):
+                    for x in int_matrix[i]:
+                        print(x, end=" ")
+                    print()
+
+
 while True:
     try:
         print("""\n1. Add matrices
@@ -239,19 +334,7 @@ while True:
 3. Multiply matrices
 0. Exit""")
 
-        choice = input("\nEnter your choice: 1, 2, 3 or 0:\n> ")
+        choice = input("\nEnter your choice: 1, 2, 3, 4 or 0:\n> ")
 
         if choice == "1":
             print("ATTENTION! The size of the two matrices must be the same!")
-            choice_1()
-        elif choice == "2":
-            choice_2()
-        elif choice == "3":
-            choice_3()
-        elif choice == "0":
-            print("Have a nice day!")
-            break
-        else:
-            raise MyError("Incorrect input, try again.")
-    except MyError as inc:
-        print(inc)
